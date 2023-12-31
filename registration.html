@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registration Form</title>
+        <style>
+            
+            #innerbox1{
+                border: 1px solid ;
+                margin-left: 400px;
+                margin-right: 400px;
+                height: 420px;
+                background-color: rgb(230, 171, 215);
+                
+            }
+            form{
+                text-align: left;
+                margin-left: 70px;
+                font-size: 20px;
+            }
+            #text{
+                margin-left: 100px;
+            }
+            #email{
+                margin-left:100px;
+            }
+            #password{
+                margin-left: 70px;
+            }
+            #dob{
+                margin-left: 40px;
+            }
+            table{
+                font-size: 20px;
+                width: 90%;
+                
+            }
+            #entry{
+                border: 1px solid;
+                margin-left: 350px;
+                margin-right: 350px;
+                margin-top: 20px;
+                height:auto;
+              width:auto;
+                background-color: rgb(240, 238, 125);
+            }
+            #text,#email,#password,#dob{
+                height:30px;
+                background-color: rgb(189, 184, 184);
+            }
+            button{
+                height:40px;
+                width:70px;
+                background-color: rgb(23, 233, 23);
+            }
+        </style>
+</head>
+ <body>
+    <center>
+        <div id="innerbox1">
+        <h2>Registration Form</h2>
+            <form id="self">
+            <label>Name</label><input id="text"type="text"placeholder="Enter full name"required><br><br>
+            <label>Email</label><input id="email" type="email"placeholder="Enter email"required><br><br>
+            <label>Password</label><input id="password"type="password"placeholder="Enter password"required><br><br>
+            <label>Date of Birth</label><input id="dob"type="date"required><br><br>
+            <input id="terms"type="checkbox"required>
+            <label>Accept terms and conditions</label><br><br>
+            <button onclick="addrow()" type="submit">Submit</button>
+            </form>
+        </div>
+    </center>
+   <div id="entry">
+        <center>
+            <h2>Entries</h3>
+            <table border="1" id="screen">
+                <tr>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Password</td>
+                <td>Dob</td>
+                <td>accept terms?</td>
+                </tr>    
+            </table>
+        </center>
+     </div>
+    <script>
+        
+function addrow(){
+      text1 = document.getElementById("text").value;
+			email1 = document.getElementById("email").value;
+			password1 = document.getElementById("password").value;
+			dob1 = document.getElementById("dob").value;
+            terms1 = document.getElementById("terms").checked?'yes':'no';
+            var presentyear=new Date().getFullYear();
+            var mybirthyear=new Date(dob1).getFullYear();
+            var age=presentyear-mybirthyear;
+            
+            
+            if(text1!="" && email1!="" && password!="" && dob1!=""&& terms1!="no"&& age>=18 &&age<=55){
+                var AddRown = document.getElementById("screen");
+                var NewRow = AddRown.insertRow();
+            var c1 = NewRow.insertCell(0);
+			var c2 = NewRow.insertCell(1);
+			var c3 = NewRow.insertCell(2);
+			var c4 = NewRow.insertCell(3);
+            var c5 = NewRow.insertCell(4);
+            c1.innerHTML = text1;
+			c2.innerHTML = email1;
+			c3.innerHTML = password1;
+			c4.innerHTML = dob1;
+            c5.innerHTML = terms1;
+            }
+            else{
+                return alert("Age is not enough")
+            }
+            document.getElementById("self").reset();
+}
+
+		
+    </script>
+    </body>
+</html>
